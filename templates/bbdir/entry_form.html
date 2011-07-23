@@ -1,0 +1,15 @@
+{% extends 'bbdir/base.html' %}
+
+{% block title %}{{ block.super }}Create entry{% endblock title %}
+
+
+{% block content %}
+<h2>create new entry</h2>
+
+<form method="POST" action="">
+	{% csrf_token %}
+	<table>{{ form }}</table>
+	<input type="submit" value="Save" />
+</form>
+
+{% endblock content %}

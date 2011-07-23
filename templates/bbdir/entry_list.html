@@ -1,0 +1,11 @@
+{% extends "bbdir/base.html" %}
+{% block title %}{{ block.super }} Bookbinders{% endblock title %}
+{% block content %}
+    <h2>Binder Entries</h2>
+    <ul>
+        
+        {% for entry in object_list %}
+            <li><a href="{{ entry.get_absolute_url }}">{{ entry.name }}</a> - {{ entry.city }}, {{ entry.state }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

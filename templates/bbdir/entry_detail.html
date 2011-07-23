@@ -1,0 +1,10 @@
+{% extends "bbdir/base.html" %}
+
+{% load markup %}
+
+{% block content %}
+    <h2>{{ object.name }} ({{ object.city }}, {{ object.state }})</h2>
+   
+    
+    {{ object.content|markdown:"footnotes" }}
+{% endblock %}
