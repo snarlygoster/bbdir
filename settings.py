@@ -21,7 +21,15 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', '' or 'oracle'.
-        'NAME': os.path.join(SITE_ROOT, 'museum.db'),                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT, 'museum.sqlite'),                      # Or path to database file if using sqlite3.
+    },
+    'joomla': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'bookbind_bookMuseumJoomla',                      # Or path to database file if using sqlite3.
+        'USER': 'dfromj',                      # Not used with sqlite3.
+        'PASSWORD': 'dfromj',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -55,7 +63,7 @@ MEDIA_ROOT = '/Library/WebServer/Documents/abbm/images'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://localhost/images/'
+MEDIA_URL = 'http://abbm.local/images/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -77,7 +85,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/deves/src/abbm-lite/lib/python2.6/site-packages/django_markitup-1.0.0-py2.6.egg/markitup/static',
+    '/Library/WebServer/Documents/images'
+    '/Users/deves/src/abbm-lite/lib/python2.7/site-packages/django_markitup-1.0.0.post112-py2.7.egg/markitup/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -124,9 +133,14 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django.contrib.markup',
+    # third party add ons
     'markitup',
     'attachments',
+    'django_extensions',
+    # our local applications
     'bbdir',
+    'joomlacontent',
+    'south',
 )
 ## TEMPLATE CONTEXT PROCESSORS used by 'attachments' application
 TEMPLATE_CONTEXT_PROCESSORS = (
