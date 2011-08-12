@@ -46,7 +46,7 @@ TIME_ZONE = 'America/Los_Angeles'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 3
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -58,18 +58,19 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/Library/WebServer/Documents/abbm/images'
+MEDIA_ROOT = '/Library/WebServer/Documents/abbm/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://abbm.local/images/'
+#MEDIA_URL = 'http://abbm.local/images/'
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/Library/WebServer/Documents/abbm/public_html/static/'
+STATIC_ROOT = '/Library/WebServer/Documents/abbm/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -85,8 +86,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Library/WebServer/Documents/images'
-    '/Users/deves/src/abbm-lite/lib/python2.7/site-packages/django_markitup-1.0.0.post112-py2.7.egg/markitup/static',
+    # '/Library/WebServer/Documents/images'
+    # '/Users/deves/src/abbm-lite/lib/python2.7/site-packages/django_markitup-1.0.0.post112-py2.7.egg/markitup/static',
 )
 
 # List of finder classes that know how to find static files in
