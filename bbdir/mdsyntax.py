@@ -1,5 +1,5 @@
 markdown_syntax_summary = """
-<table>
+<table class="help-text">
 	<tr>
 		<td><pre>       
 Syntax Cheatsheet:
