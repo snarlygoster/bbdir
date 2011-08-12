@@ -38,9 +38,11 @@ def articles_to_binders(articles):
         articletobinder(a)
         
 # m = re.match(r'(?P<name>[^(]*)\((?P<location>[^)]*)', title)
+# l = re.match(r'(?P<city>\w*)\W*(?P<state>\w*).*$',  m.group('location'))
 
 def articletobinder(article):
     bb = re.match(r'(?P<name>[^(]*)\(*(?P<location>[^)]*)', article.title)
+    loc = re.match(r'(?P<city>\w*)\W*(?P<state>\w*).*$',  bb.group('location'))
 #     if article.alias:
 #         trimslug = re.match(r'[^\w]*([\w-]+)$', article.alias)
 #         josslug = trimslug.group(1)
@@ -50,7 +52,9 @@ def articletobinder(article):
     jos_combined_text = article.introtext + article.fulltext
     entry, newly_created = Entry.objects.get_or_create(
         name = bb.group('name').strip(),
-        location = bb.group('location').strip(),
+        city = loc.group('city').strip(),
+        state = loc.group('state').strip(),
+        # location = bb.group('location').strip(),
         creator = import_user,
         )
     soup = BeautifulSoup.BeautifulSoup(jos_combined_text)
@@ -66,7 +70,8 @@ def articletobinder(article):
         pict.close()
         img['src'] = urlparse(a.attachment_file.url).path
     
-    entry.content = html2text(jos_combined_text)
+    
+    entry.content = html2text(unicode(soup))
     entry.save()
 #     binder, newly_created = Bookbinder.objects.get_or_create(
 #         joscontent = article, 
