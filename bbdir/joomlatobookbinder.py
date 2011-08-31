@@ -18,6 +18,8 @@ from joomlacontent.models import JosContent
 from bbdir.models import Entry
 from attachments.models import Attachment
 
+
+
 # from django.utils.html import strip_tags
 # from htmlentitydefs import name2codepoint
 # 
@@ -42,7 +44,14 @@ def articles_to_binders(articles):
 
 def articletobinder(article):
     bb = re.match(r'(?P<name>[^(]*)\(*(?P<location>[^)]*)', article.title)
-    loc = re.match(r'(?P<city>\w*)\W*(?P<state>\w*).*$',  bb.group('location'))
+    location_parts = bb.group('location').split(',')
+    if len(location_parts) == 2 :
+        (city, state) = location_parts
+    else:
+        city = bb.group('location').strip()
+        state = ''
+        
+#   loc = re.match(r'(?P<city>\w*)\W*(?P<state>\w*).*$',  bb.group('location'))
 #     if article.alias:
 #         trimslug = re.match(r'[^\w]*([\w-]+)$', article.alias)
 #         josslug = trimslug.group(1)
@@ -52,8 +61,8 @@ def articletobinder(article):
     jos_combined_text = article.introtext + article.fulltext
     entry, newly_created = Entry.objects.get_or_create(
         name = bb.group('name').strip(),
-        city = loc.group('city').strip(),
-        state = loc.group('state').strip(),
+        city = city.strip(),
+        state = state.strip(),
         # location = bb.group('location').strip(),
         creator = import_user,
         )
