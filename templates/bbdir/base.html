@@ -6,6 +6,6 @@
 <body>
 
     {% block content %}{% endblock content %}
-
+{% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
 </body>
 </html>
