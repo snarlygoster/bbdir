@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'markitup',
     'attachments',
     'django_extensions',
+    'tagging',
     # our local applications
     'bbdir',
     'joomlacontent',

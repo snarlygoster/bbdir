@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# Create your models here.
-from django_extensions.db.fields import  AutoSlugField
-                                         
 from django.template.defaultfilters import slugify
 
-# Create your models here.
+## Third party imports
+import tagging
+from django_extensions.db.fields import  AutoSlugField
+
+## our custom imports
+
 from bbdir.mdsyntax import markdown_syntax_summary # help text
+
+# Create your models here.
 
 class Entry(models.Model):
     """Entry"""
@@ -48,3 +51,5 @@ class Entry(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('entry-detail', ([self.slug]))
+
+tagging.register(Entry)
