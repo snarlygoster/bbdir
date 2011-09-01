@@ -24,4 +24,11 @@
    {% if has_next %}
       <span class="page"><a href="?page={{ next }}">Next &gt;</a></span>
    {% endif %}
+   <br>
+   {% if  page_obj.paginator.chunks%}
+   {% for chunk in page_obj.paginator.chunks %}
+      <span class="page"><a href="{% url entry-list page_obj.paginator.on %}?page={{ chunk.page_num }}">{{ chunk.key }}</a></span>
+   {% endfor %}
+   {% endif %}
+
 </div>

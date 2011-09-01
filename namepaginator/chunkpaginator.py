@@ -16,5 +16,6 @@ class ChunkPaginator(Paginator):
             chunks.append({'key': letter, 'page_num': page_num})
             object_sum += initials.count(letter)
             page_num = object_sum/self.per_page+1
+        self.is_chunkinated = len(chunks) > 1
         return chunks
-    chunks = property(_get_chunks)    
+    chunks = property(_get_chunks)
