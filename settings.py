@@ -1,4 +1,4 @@
-# Django settings for abbm project.
+ # Django settings for abbm project.
 
 import os
 import django
@@ -46,7 +46,7 @@ TIME_ZONE = 'America/Los_Angeles'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 2
+SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -70,7 +70,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/Library/WebServer/Documents/abbm/static/'
+STATIC_ROOT = '/Library/WebServer/Documents/abbm-joomla/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -141,7 +141,7 @@ INSTALLED_APPS = (
     'tagging',
     # our local applications
     'bbdir',
-    'joomlacontent',
+    #'joomlacontent',
     'south',
 )
 ## TEMPLATE CONTEXT PROCESSORS used by 'attachments' application
