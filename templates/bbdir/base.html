@@ -1,10 +1,12 @@
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
+
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>{% block title %}Directory{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}paginator.css" />
+    <link rel="stylesheet" href="/templates/rt_haiku/css/template_css.css" type="text/css" />
 </head>
 <body>
 
