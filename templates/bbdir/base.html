@@ -1,16 +1,98 @@
 {% load static %}
 {% get_static_prefix as STATIC_PREFIX %}
 
+<!DOCTYPE html>
+
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>{% block title %}Directory{% endblock title %}</title>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}paginator.css" />
-    <link rel="stylesheet" href="/templates/rt_haiku/css/template_css.css" type="text/css" />
-</head>
-<body>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Type" content="text/html; _ISO">
+  <meta name="robots" content="index, follow">
 
-    {% block content %}{% endblock content %}
-{% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
+    <title>{% block title %}Directory{% endblock title %}</title>
+  <link href="/templates/rt_haiku/css/template_css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}paginator.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_PREFIX }}bbdir.css">
+
+  <link rel="shortcut icon" href="/images/favicon.ico"><!-- google analytics scripts removed -->
+</head>
+
+<body id="page_bg">
+  <a name="up" id="up"></a>
+
+  <div id="center">
+    <div id="main_bg">
+      <div id="content_bg">
+        <div id="header">
+          <div id="newflash">
+            <div>
+              <!-- jdoc:include type="modules" name="top" / -->
+            </div>
+          </div>
+        </div>
+
+        <div id="topmenu">
+          <!-- jdoc:include type="modules" name="user3" style="{-1}" / -->
+
+          <ul id="mainlevel-nav">
+            <li><a href="/" class="mainlevel-nav">Home</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=category&amp;layout=blog&amp;id=1&amp;Itemid=26" class="mainlevel-nav">Equipment</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=section&amp;layout=blog&amp;id=2&amp;Itemid=27" class="mainlevel-nav">Documents</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=article&amp;id=35&amp;Itemid=48" class="mainlevel-nav">Manuals</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=article&amp;id=38&amp;Itemid=50" class="mainlevel-nav">Periodicals</a></li>
+
+            <li><a href="/bookbinders/bbdir/name/" class="mainlevel-nav">Bookbinders</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=section&amp;layout=blog&amp;id=8&amp;Itemid=30" class="mainlevel-nav">Newsletter</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=section&amp;layout=blog&amp;id=14&amp;Itemid=55" class="mainlevel-nav">Wanted</a></li>
+
+            <li><a href="/index.php?option=com_content&amp;view=article&amp;id=791&amp;Itemid=56" class="mainlevel-nav">Links</a></li>
+
+            <li><a href="/index.php?option=com_contact&amp;Itemid=18" class="mainlevel-nav">Contact</a></li>
+          </ul>
+
+          <div class="search"></div>
+</div>
+
+          <div id="content">
+            <div class="padding">
+              <!-- jdoc:include type="module" name="breadcrumb" / -->
+              <!-- <?php // if (mosCountModules('user1')) { ?> -->
+              <!-- <jdoc:exists type="modules" condition="user1" /> -->
+            </div>
+
+
+              <div class="highlight">           </div>
+              <div class="bbdir">
+              
+
+     {% block content %}{% endblock content %}
+     {% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
+              </div>              
+<!-- <jdoc:include type="component" /> -->
+            </div><!-- </jdoc:exists> -->
+          </div>
+        </div>
+
+        <div id="navigation">
+          <div class="padding">
+            <!-- <jdoc:include type="modules" name="user4" /> -->
+            <!-- jdoc:include type="modules" name="user4" /> -->
+            <!--  <?php //  mosLoadModules( 'user2', -2); ?><?php //mosLoadModules( 'right', -2); ?> ; -->
+          </div>
+        </div>
+
+        <div id="footer">
+          American Bookbinders Museum | 2736 16th Street | San Francisco, CA 94103 | (415) 671-2233<br>
+          <a href="/index.php?Itemid=3">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
