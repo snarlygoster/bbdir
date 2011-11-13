@@ -11,7 +11,7 @@ class ChunkPaginator(Paginator):
         chunks = []
         page_num = 1
         object_sum = 0
-        initials = [n[0][0] for n in self.object_list.values_list(self.on)]
+        initials = [n[0][0] if len(n[0]) else u'' for n in self.object_list.values_list(self.on)]
         for letter in sorted(set(initials)):
             chunks.append({'key': letter, 'page_num': page_num})
             object_sum += initials.count(letter)
