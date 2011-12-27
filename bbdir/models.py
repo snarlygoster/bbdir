@@ -17,7 +17,7 @@ class Entry(models.Model):
     name = models.CharField( max_length=255, blank=False, null=True, help_text="enter as 'Lastname, Firstname' or Business Name")
     #location = models.CharField( max_length=300, blank=True, null=True, help_text="legacy joomla location format")
     city = models.CharField( max_length=255, blank=True, null=True,)
-    state = models.CharField( max_length=3, blank=True, null=True, help_text="two letter postal abbreviation")
+    state = models.CharField( max_length=255, blank=True, null=True, help_text="two letter postal abbreviation")
     
     slug = AutoSlugField(populate_from = ['name', 'location'])
     

@@ -5,9 +5,9 @@
     <ul>
         
         {% for entry in object_list %}
-            <li><a href="{{ entry.slug }}">{{ entry.name }}</a> - {{ entry.location }} </li>
+            <li><a href="{{ entry.slug }}?page={{ page_obj.number }}">{{ entry.name }}</a> - {{ entry.location }} </li>
         {% endfor %}
     </ul>
-    
+    page: {{ page_obj.number }}
 
 {% endblock content %}

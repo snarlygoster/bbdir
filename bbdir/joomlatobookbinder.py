@@ -28,9 +28,9 @@ from attachments.models import Attachment
 #     return re.sub('&(%s);' % '|'.join(name2codepoint), 
 #             lambda m: unichr(name2codepoint[m.group(1)]), s)
 
-JOOMLA_IMG_ROOT = '/Volumes/MyBook_2/Bookbindermuseum.com/public_html/'
+JOOMLA_IMG_ROOT = '/home/bookbind/public_html/'
 
-import_user = User.objects.get(username__exact='deves')
+import_user = User.objects.get(username__exact='bookbind')
 
 articles = JosContent.objects.using('joomla').filter(section__title='Bookbinders')
 # bothtext = articles.exclude(introtext__exact='').exclude(fulltext__exact='')
@@ -59,7 +59,7 @@ def articletobinder(article):
 #         josslug = slugify(bb.group('name').strip() + ' ' + bb.group('location').strip())
     
     jos_combined_text = article.introtext + article.fulltext
-    entry, newly_created = Entry.objects.get_or_create(
+    entry = Entry.objects.create(
         name = bb.group('name').strip(),
         city = city.strip(),
         state = state.strip(),
@@ -70,15 +70,18 @@ def articletobinder(article):
     for img in soup.findAll('img', src=True):
         absolutepath = os.path.join(JOOMLA_IMG_ROOT, unquote(img['src']))
         os.chdir(os.path.dirname(absolutepath))
-        pict = File(open(os.path.basename(absolutepath), 'r'))
-        a = Attachment()
-        a.creator = import_user
-        a.content_object = entry
-        a.attachment_file = pict
-        a.save()
-        pict.close()
-        img['src'] = urlparse(a.attachment_file.url).path
-    
+        try:
+            pict = File(open(os.path.basename(absolutepath), 'r'))
+            a = Attachment()
+            a.creator = import_user
+            a.content_object = entry
+            a.attachment_file = pict
+            a.save()
+            pict.close()
+            img['src'] = urlparse(a.attachment_file.url)[2] # python 2.4 version 
+                                                            # of urlparse
+        except IOError:
+            print 'cannot open ' , absolutepath
     
     entry.content = html2text(unicode(soup))
     entry.save()

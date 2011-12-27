@@ -18,16 +18,25 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
+# 	var $user = 'bookbind_bookbin';
+# 	var $db = 'bookbind_abbm';
+# 	var $password = 'timtom2233';
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', '' or 'oracle'.
-        'NAME': os.path.join(SITE_ROOT, 'museum.sqlite'),                      # Or path to database file if using sqlite3.
-    },
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'bookbind_abbm',                      # Or path to database file if using sqlite3.
+        'USER': 'bookbind_bookbin',                      # Not used with sqlite3.
+        'PASSWORD': 'timtom2233',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+     },
     'joomla': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'bookbind_bookMuseumJoomla',                      # Or path to database file if using sqlite3.
-        'USER': 'dfromj',                      # Not used with sqlite3.
-        'PASSWORD': 'dfromj',                  # Not used with sqlite3.
+        'USER': 'bookbind_bookbin',                      # Not used with sqlite3.
+        'PASSWORD': 'timtom2233',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -58,7 +67,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/Library/WebServer/Documents/abbm/media'
+MEDIA_ROOT = '/home/bookbind/public_html/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -70,7 +79,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/Library/WebServer/Documents/abbm-joomla/static'
+STATIC_ROOT = '/home/bookbind/public_html/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -146,7 +155,7 @@ INSTALLED_APPS = (
 )
 ## TEMPLATE CONTEXT PROCESSORS used by 'attachments' application
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',

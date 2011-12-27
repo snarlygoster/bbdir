@@ -70,9 +70,10 @@
               <div class="highlight">           </div>
               <div class="bbdir">
               
-
+     {% if is_paginated %}{% load paginator %}{% endif %}
      {% block content %}{% endblock content %}
-     {% if is_paginated %}{% load paginator %}{% paginator 3 %}{% endif %}
+     
+     {% if is_paginated %}{% paginator 3 %}{% endif %}
               </div>              
 <!-- <jdoc:include type="component" /> -->
             </div><!-- </jdoc:exists> -->

@@ -48,7 +48,6 @@ class PublisherDetailView(DetailView):
         
         
     def get_paginator(self, queryset, per_page, orphans=0, allow_empty_first_page=True):
-        print self.model
         return ChunkPaginator(queryset, per_page, orphans, allow_empty_first_page, on=self.on)
 
 #     def get_context_data(self, **kwargs):
@@ -60,3 +59,14 @@ class PublisherDetailView(DetailView):
 
 class BinderDirectoryDetailView(DetailView):
     model=Entry
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(BinderDirectoryDetailView, self).get_context_data(**kwargs)
+        context['sort_by'] = self.kwargs['sort_by']
+        context['slug'] = self.kwargs['slug']
+        context['path_info'] = self.request.path_info
+        context['path'] = self.request.get_full_path()
+        context['up_path'] = context['path'].replace(context['slug'] + '/', '')
+        
+        return context
