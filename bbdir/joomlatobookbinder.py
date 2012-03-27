@@ -14,6 +14,7 @@ from django.template.defaultfilters import slugify
 from django.core.files import File
 from django.contrib.auth.models import User
 
+from tagging.models import Tag
 from joomlacontent.models import JosContent
 from bbdir.models import Entry
 from attachments.models import Attachment
@@ -85,6 +86,7 @@ def articletobinder(article):
     
     entry.content = html2text(unicode(soup))
     entry.save()
+    Tag.objects.add_tag(entry, 'joomlacontent')
 #     binder, newly_created = Bookbinder.objects.get_or_create(
 #         joscontent = article, 
 #         name = bb.group('name').strip(), 
