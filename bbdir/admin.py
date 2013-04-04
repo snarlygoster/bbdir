@@ -11,6 +11,6 @@ class EntryAdmin(admin.ModelAdmin):
     inlines = [AttachmentInlines]
     formfield_overrides = {models.TextField: {'widget': AdminMarkItUpWidget}}
     list_display = ('name','city','state','modified','created','creator') 
-    search_fields = [ 'name','city','state','creator' ]
- 
+    search_fields = [ 'name','city','state','creator__username' ]
+
 admin.site.register(Entry,EntryAdmin)
